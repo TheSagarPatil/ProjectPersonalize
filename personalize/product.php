@@ -30,5 +30,43 @@ class Product{
         $stmt->execute();
         return $stmt;
 	}
+	public function saveProduct(){
+		$query = "INSERT INTO `tbl_products`(`name`) VALUES (:name)";
+		$stmt = $this->conn->prepare($query);
+		$this->name=htmlspecialchars(strip_tags($this->name));
+		$stmt->bindParam(':name', $this->name);
+		if($stmt->execute()){
+			$msg="success";
+		}else{
+			$msg="fail";
+		}
+		return $msg;
+	}
+	public function updateProduct(){
+		$query = "UPDATE `tbl_products` SET `name`=:name WHERE `id`=:id";
+		$stmt = $this->conn->prepare($query);
+		$this->id=htmlspecialchars(strip_tags($this->id));
+		$this->name=htmlspecialchars(strip_tags($this->name));
+		$stmt->bindParam(':id', $this->id);
+		$stmt->bindParam(':name', $this->name);
+		if($stmt->execute()){
+			$msg="success";
+		}else{
+			$msg="fail";
+		}
+		return $msg;
+	}
+	public function deleteProduct(){
+		$query = "DELETE FROM `tbl_products` WHERE `id`=:id";
+		$stmt = $this->conn->prepare($query);
+		$this->id=htmlspecialchars(strip_tags($this->id));
+		$stmt->bindParam(':id', $this->id);
+		if($stmt->execute()){
+			$msg="success";
+		}else{
+			$msg="fail";
+		}
+		return $msg;
+	}
 }	
 ?>

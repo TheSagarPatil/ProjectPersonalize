@@ -25,7 +25,7 @@
 		<div class="col-12 col-md-5">
 			<form name="search" action="products.php" method="post">
 			<div class="input-group mb-3">
-			  <input type="text" name="name" class="form-control" placeholder="Search by Name" aria-label="Product name" aria-describedby="btnSearch">
+			  <input type="text" name="searchname" class="form-control" placeholder="Search by Name" aria-label="Product name" aria-describedby="btnSearch">
 			  <div class="input-group-append">
 				<input type="submit" class="btn btn-outline-secondary" id="btnSearch"/>
 			  </div>
@@ -35,9 +35,9 @@
 	</div>
     <?php	
 	$product = new Product($db);
-	if( isset($_POST["name"]) ){
-		echo "search_term : " . $_POST["name"];
-		$product->name = $_POST["name"];
+	if( isset($_POST["searchname"]) ){
+		echo "search_term : " . $_POST["searchname"];
+		$product->name = $_POST["searchname"];
 	}
 	$result = $product->getProductList();
     $num = $result->rowCount();
@@ -103,7 +103,7 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 				extract($row);
 ?>
 			
-			<form name="update" action="products.php">
+			<form name="f1" action="product_SUD.php" method="post">
 			<div class="row">
 			<div class="col-12 col-">
 				<div class="form-group">
@@ -112,7 +112,7 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 						<label class="dyn-text" for="id">ID</label>
 					</div>
 					<div class="col-12 col-md-8">
-						<input type="id" class="form-control" value="<?php echo $id; ?>" id="exampleInputEmail1" aria-describedby="idHelp" placeholder="Product ID">
+						<input type="text" name="id" class="form-control" value="<?php echo $id; ?>" id="exampleInputEmail1" aria-describedby="idHelp" placeholder="Product ID">
 						<small id="idHelp" class="form-text text-muted">Product ID goes here.</small>
 					</div>
 					</div>
@@ -123,7 +123,7 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 						<label class="dyn-text" for="name">Name</label>
 						</div>
 					<div class="col-12 col-md-8">
-						<input type="name" class="form-control" value="<?php echo $name; ?>" id="exampleInputEmail1" aria-describedby="nameHelp" placeholder="Product Name">
+						<input type="text" name="name" class="form-control" value="<?php echo $name; ?>" id="exampleInputEmail1" aria-describedby="nameHelp" placeholder="Product Name">
 						<small id="nameHelp" class="form-text text-muted">Product Name goes here.</small>
 					</div>
 					</div>
@@ -132,10 +132,10 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 			</div>
 			<div class="row">
 				<div class="btn-group special" role="group">
-				<input type="button" class="btn btn-dark" value="New"/>
-				<input type="button" class="btn btn-dark" value="Reset"/>
-				<input type="submit" class="btn btn-dark" value="Save"/>
-				<input type="submit" class="btn btn-dark" value="Delete"/>
+				<input type="button" class="btn btn-dark" name="new" value="New Record"/>
+				<input type="button" class="btn btn-dark" name="Reset" value="Reset Values"/>
+				<input type="submit" class="btn btn-dark" name="Save" value="Save Record"/>
+				<input type="submit" class="btn btn-dark" name="Delete" value="Delete Record"/>
 				</div>
 			</div>
 			</form>
@@ -152,5 +152,11 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 	<script src="js/bootstrap.min.js" ></script>
 
 	</div>
+	<script>
+	$("[name='new']").click(function(){
+		$("[name='id']").val("").attr("disabled","true");
+		$("[name='name']").val("")
+	})
+	</script>
   </body>
 </html>
