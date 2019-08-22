@@ -4,6 +4,7 @@
     //instanciate db and connect
     $database = new Database();
     $db = $database->nconnect();
+	include_once 'commonfe.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -11,10 +12,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <title>All Products</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/custom.css">
   </head>
   <body>
   <div class="container">
@@ -56,7 +54,6 @@
 		while($row = $result->fetch(PDO::FETCH_ASSOC)){
             extract($row);
 ?>
-			
 			<tr>
 				<td><a href="products.php?id=<?php echo $id; ?>"><?php echo $id; ?></a>
 				</td>
@@ -146,11 +143,6 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 		}
 	}	
 ?>
-	
-	<script src="js/jquery.js" ></script>
-	<script src="js/popper.js" ></script>
-	<script src="js/bootstrap.min.js" ></script>
-
 	</div>
 	<script>
 	$("[name='new']").click(function(){

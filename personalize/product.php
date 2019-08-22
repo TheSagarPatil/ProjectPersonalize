@@ -5,12 +5,12 @@ class Product{
 	public $id;
 	public $name;
 	/*
-	SELECT `id`, `name` FROM `tbl_products` 
-	SELECT `id`, `name` FROM `tbl_products` where `id`=1
-	SELECT `id`, `name` FROM `tbl_products` where `name` like '%p%'
-	INSERT INTO `tbl_products`(`name`) VALUES ("product 1")
-	UPDATE `tbl_products` SET `name`="prod 1" WHERE `id`=1
-	DELETE FROM `tbl_products` WHERE `id`=1
+	SELECT `id`, `name` FROM `tbl_product` 
+	SELECT `id`, `name` FROM `tbl_product` where `id`=1
+	SELECT `id`, `name` FROM `tbl_product` where `name` like '%p%'
+	INSERT INTO `tbl_product`(`name`) VALUES ("product 1")
+	UPDATE `tbl_product` SET `name`="prod 1" WHERE `id`=1
+	DELETE FROM `tbl_product` WHERE `id`=1
 	*/
 	public function __construct($db){
         $this->conn = $db;
@@ -21,7 +21,7 @@ class Product{
 		$query = "SELECT 
 					`id`, 
 					`name` 
-				FROM `tbl_products` 
+				FROM `tbl_product` 
 				 {$Byid} {$Byname}";		
         $stmt = $this->conn->prepare($query);
         $this->id=htmlspecialchars(strip_tags($this->id));
@@ -31,7 +31,7 @@ class Product{
         return $stmt;
 	}
 	public function saveProduct(){
-		$query = "INSERT INTO `tbl_products`(`name`) VALUES (:name)";
+		$query = "INSERT INTO `tbl_product`(`name`) VALUES (:name)";
 		$stmt = $this->conn->prepare($query);
 		$this->name=htmlspecialchars(strip_tags($this->name));
 		$stmt->bindParam(':name', $this->name);
@@ -43,7 +43,7 @@ class Product{
 		return $msg;
 	}
 	public function updateProduct(){
-		$query = "UPDATE `tbl_products` SET `name`=:name WHERE `id`=:id";
+		$query = "UPDATE `tbl_product` SET `name`=:name WHERE `id`=:id";
 		$stmt = $this->conn->prepare($query);
 		$this->id=htmlspecialchars(strip_tags($this->id));
 		$this->name=htmlspecialchars(strip_tags($this->name));
@@ -57,7 +57,7 @@ class Product{
 		return $msg;
 	}
 	public function deleteProduct(){
-		$query = "DELETE FROM `tbl_products` WHERE `id`=:id";
+		$query = "DELETE FROM `tbl_product` WHERE `id`=:id";
 		$stmt = $this->conn->prepare($query);
 		$this->id=htmlspecialchars(strip_tags($this->id));
 		$stmt->bindParam(':id', $this->id);
