@@ -5,6 +5,7 @@ $database = new Database();
 $db = $database->nconnect();
 $productVariant = new ProductVariant($db);
 include_once 'commonfe.php';
+
 ?>
 <body>
   <div class="container">
@@ -39,7 +40,7 @@ include_once 'commonfe.php';
 			<input name="variant_id" type="hidden" value="<?php echo $id;?>"/>
 			<input name="product_name" type="hidden" value="<?php echo $product_id;?>"/>
 			<p class="card-text"><?php echo $variant_description;?></p>
-			<a href="choose_product.php?productId=<?php echo $product_id;?>&variantId=<?php echo $id;?>" class="card-link">View Product</a>
+			<a href="order_product.php?productId=<?php echo $product_id;?>&variantId=<?php echo $id;?>" class="card-link">View Product</a>
 		  </div>
 		</div>
 		</div>

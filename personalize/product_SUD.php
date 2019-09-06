@@ -13,15 +13,15 @@ if(isset($_POST["Save"])){
 	$query = "";
 	if($product->id==""){
 		echo "saving";
-		$msg = $product->saveProduct();
+		$msg = $product->saveRecord();
 	}else{
 		echo "updating";
-		$msg = $product->updateProduct();
+		$msg = $product->updateRecord();
 	}
 }
 if(isset($_POST["Delete"])){
 	$product->id = isset($_POST["id"])?$_POST["id"]:"";
-	$product->deleteProduct();
+	$product->deleteRecord();
 	echo "deleting";
 }
 echo $query;

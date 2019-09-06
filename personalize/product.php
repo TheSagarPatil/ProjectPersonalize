@@ -15,7 +15,7 @@ class Product{
 	public function __construct($db){
         $this->conn = $db;
     }
-    public function getProductList(){
+    public function getRecordList(){
 		$Byid =!empty($this->id)?"where `id`=:Id":"";
 		$Byname =!empty($this->name)?"where `name` like '%".$this->name."%' ":"";
 		$query = "SELECT 
@@ -30,7 +30,7 @@ class Product{
         $stmt->execute();
         return $stmt;
 	}
-	public function saveProduct(){
+	public function saveRecord(){
 		$query = "INSERT INTO `tbl_product`(`name`) VALUES (:name)";
 		$stmt = $this->conn->prepare($query);
 		$this->name=htmlspecialchars(strip_tags($this->name));
@@ -42,7 +42,7 @@ class Product{
 		}
 		return $msg;
 	}
-	public function updateProduct(){
+	public function updateRecord(){
 		$query = "UPDATE `tbl_product` SET `name`=:name WHERE `id`=:id";
 		$stmt = $this->conn->prepare($query);
 		$this->id=htmlspecialchars(strip_tags($this->id));
@@ -56,7 +56,7 @@ class Product{
 		}
 		return $msg;
 	}
-	public function deleteProduct(){
+	public function deleteRecord(){
 		$query = "DELETE FROM `tbl_product` WHERE `id`=:id";
 		$stmt = $this->conn->prepare($query);
 		$this->id=htmlspecialchars(strip_tags($this->id));

@@ -10,10 +10,10 @@ class ProductVariant{
 	public function __construct($db){
         $this->conn = $db;
     }
-    public function getVariantList(){
+    public function getRecordList(){
 		$Byid =!empty($this->id)?"where `tbl_product_variant`.`id`= :Id":"";
 		$ByProductid =!empty($this->product_id)?" AND `tbl_product_variant`.`product_id`= :product_id":"";
-		//$Byname =!empty($this->variant_name)?"where `variant_name` like '%".$this->variant_name."%' ":"";
+		$Byname =!empty($this->variant_name)?"where `tbl_product_variant`.`variant_name` like '%".$this->variant_name."%' ":"";
 		$query = "SELECT 
 				`tbl_product_variant`.`id`, 
 				`tbl_product`.`name`, 
@@ -23,7 +23,7 @@ class ProductVariant{
 			FROM `tbl_product_variant` 
 			left join `tbl_product` 
 			on `tbl_product`.`id` = `tbl_product_variant`.`product_id`
-				 {$Byid} {$ByProductid}";		
+				 {$Byid} {$ByProductid} {$Byname}";		
 		//echo $query;
         
 		$stmt = $this->conn->prepare($query);

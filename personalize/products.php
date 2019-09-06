@@ -37,7 +37,7 @@
 		echo "search_term : " . $_POST["searchname"];
 		$product->name = $_POST["searchname"];
 	}
-	$result = $product->getProductList();
+	$result = $product->getRecordList();
     $num = $result->rowCount();
 	if($num > 0){
 		echo "<h6> Some records are found </h6>";
@@ -69,7 +69,7 @@
 	
 	if( isset($_GET["id"]) ){
 		$product->id =!empty($_GET["id"])?$_GET["id"]:""; 
-		$result = $product->getProductList();
+		$result = $product->getRecordList();
 		$num = $result->rowCount();
 		if($num > 0){
 ?>
