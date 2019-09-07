@@ -128,10 +128,10 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 				<div class="form-group">
 					<div class="row">
 					<div class="col-12 col-md-4 ">
-						<label class="dyn-text" for="name">Name</label>
+						<label class="dyn-text" for="variant_name">Name</label>
 						</div>
 					<div class="col-12 col-md-8">
-						<input type="text" name="name" class="form-control" value="<?php echo $variant_name; ?>" id="exampleInputEmail1" aria-describedby="nameHelp" placeholder="Product Name">
+						<input type="text" name="variant_name" class="form-control" value="<?php echo $variant_name; ?>" id="variant_name" aria-describedby="nameHelp" placeholder="Product Variant Name">
 						<small id="nameHelp" class="form-text text-muted">Product Variant name goes here.</small>
 					</div>
 					</div>
@@ -178,7 +178,7 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 						<label class="dyn-text" for="variant_description">Variant Description</label>
 						</div>
 					<div class="col-12 col-md-8">
-						<input type="text" name="name" class="form-control" value="<?php echo $variant_description; ?>" id="variant_description" aria-describedby="nameHelp" placeholder="Variant description">
+						<input type="text" name="variant_description" class="form-control" value="<?php echo $variant_description; ?>" id="variant_description" aria-describedby="nameHelp" placeholder="Variant description">
 						<small id="variant_descriptionHelp" class="form-text text-muted">Product Variant name goes here.</small>
 					</div>
 					</div>
