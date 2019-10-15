@@ -1,7 +1,6 @@
 .btn-group.special {
   display: flex;
   width:100%;
-  overflow: auto;
 }
 
 .special .btn {

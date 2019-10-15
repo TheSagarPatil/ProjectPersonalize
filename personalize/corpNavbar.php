@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Personalize</a>
+  <a class="navbar-brand" href="corphome.php">Personalize</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -12,7 +12,7 @@ if(isset($_SESSION["loginMode"])){
     <ul class="navbar-nav ml-auto">
 		
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="corphome.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -87,7 +87,7 @@ if(isset($_SESSION["loginMode"])){
 <?php
 			if($_SESSION["loginMode"] == "sup"){
 ?>
-				  <a class="dropdown-item" href="productStockView.php?supId=<?php echo $_SESSION["id"]?>">Manage Product Stocks [wip]</a>
+				  <a class="dropdown-item" href="productStockView.php?supId=<?php echo $_SESSION["id"]?>">Manage Product Stocks </a>
 <?php
 			}
 			if($_SESSION["loginMode"] == "emp"){
@@ -107,7 +107,7 @@ if(isset($_SESSION["loginMode"])){
 				</a>
 				<div class="dropdown-menu" aria-labelledby="inventoryDropdown">
 				  <a class="dropdown-item" href="Employees.php">Employees</a>
-				  <a class="dropdown-item" href="Employees.php">Employee Delivery Asg [wip]</a>
+				  <a class="dropdown-item" href="employeeJobAsg.php">Employee Delivery Asg [wip]</a>
 				</div>
 			</li>			
 			<li class="nav-item dropdown">
@@ -132,16 +132,27 @@ if(isset($_SESSION["loginMode"])){
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="inventoryDropdown">
 				  <a class="dropdown-item" href="report_top5grossing.php">Top 5 Products [wip]</a>
 				  <a class="dropdown-item" href="report_top5Suppliers.php">Top 5 Suppliers [wip]</a>
+				</div>
+			</li>
 <?php 	
 			}
 		}if ($_SESSION["loginMode"] == "sup"){
+			
 ?>
-				  <a class="dropdown-item" href="report_top5Suppliers.php">My Top 5 Products [wip]</a>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="inventoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  Reports
+				</a>
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="inventoryDropdown">
+								
+					<a class="dropdown-item" href="report_Suptop5grossing.php">My Top 5 Products [wip] </a>
 				</div>
-			</li>	
+			</li>
 <?php
 		}
 ?>
+					
+
 			</div>
 		  </ol>
 		</nav>

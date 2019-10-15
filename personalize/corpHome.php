@@ -52,7 +52,7 @@
 				if($num > 0){
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 						extract($row);
-						echo "<h1 class='display-3 text-center'>".$orderNum."</h1>";
+						echo "<h1 class='display-1 text-center'>".$orderNum."</h1>";
 					}
 				}
 ?>
@@ -73,7 +73,7 @@
 				if($num > 0){
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 						extract($row);
-						echo "<h1 class='display-3 text-center'>".$customerCount."</h1>";
+						echo "<h1 class='display-1 text-center'>".$customerCount."</h1>";
 					}
 				}
 ?>
@@ -85,7 +85,7 @@
 		<div class="col-12 col-sm-6 col-md-4 col-lg-4">
 			<div class="card ">
 			  <div class="card-header">Top 5 Grossing <small class="text-right">[This Week]</small></div>
-			  <div class="card-body"><h1 class="display-3 text-center">&nbsp;</h1></div>
+			  <div class="card-body"><h1 class="display-1 text-center">&nbsp;</h1></div>
 			  <div class="card-footer"><a href="report_top5grossing.php">View Report</a></div>
 			</div>
 		</div>
@@ -98,7 +98,7 @@
 		<div class="col-12 col-sm-6 col-md-4 col-lg-4">
 			<div class="card ">
 			  <div class="card-header">My Top 5 Grossing <small class="text-right">[This Week]</small></div>
-			  <div class="card-body"><h1 class="display-3 text-center">&nbsp;</h1></div>
+			  <div class="card-body"><h1 class="display-2 text-center">&nbsp;</h1></div>
 			  <div class="card-footer"><a href="report_top3products.php">View Report</a></div>
 			</div>
 		</div>
@@ -107,3 +107,11 @@
 ?>
 	</div>
 </div>
+<style>
+.card-header,
+.card-body,
+.card-footer{
+	border:0;
+	background-color:#fff;
+}
+</style>

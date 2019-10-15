@@ -27,7 +27,7 @@
 			<form name="search" action="productStockView.php" method="post">
 			<div class="input-group mb-3">
 			  <input type="text" name="searchname" class="form-control" placeholder="Search by Name" aria-label="Product name" aria-describedby="btnSearch">
-			  <input type="text" name="supplierId" class="form-control" value="<?php echo !empty($_GET['supId'])? $_GET['supId']:""; ?>"placeholder="Search by SupplierId" aria-label="supplierId name" aria-describedby="btnSearch">
+			  <input type="text" name="supplierId" class="d-none form-control" value="<?php echo !empty($_GET['supId'])? $_GET['supId']:""; ?>"placeholder="Search by SupplierId" aria-label="supplierId name" aria-describedby="btnSearch">
 			  <div class="input-group-append">
 				<input type="submit" class="btn btn-outline-secondary" id="btnSearch"/>
 			  </div>
@@ -101,9 +101,7 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 ?>			
 			<div class="alert alert-success alert-dismissible fade show " role="alert">
 			  <h4 class="alert-heading">Success!</h4>
-			  <p>Notice text</p>
-			  <hr>
-			  <p class="mb-0">Additional text</p>
+			  <p>Stock updated</p>
 			</div>
 <?php
 		}
@@ -134,12 +132,12 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 					<div class="form-group">
 						<div class="row">
 						<div class="col-12 col-md-4 ">
-							<label class="dyn-text" for="id">ID</label>
+							<label class="dyn-text" for="id">Product Variant</label>
 						</div>
 						<div class="col-12 col-md-8">
-							<input type="text" name="productVariantId" class="form-control d-none" value="<?php echo $productVariantId; ?>" id="productVariantId" aria-describedby="productVariantIdHelp" placeholder="product Variant Id"/>
+							<input type="text" name="productVariantId2" class="form-control d-none" value="<?php echo $productVariantId; ?>" id="" aria-describedby="productVariantIdHelp" placeholder="product Variant Id"/>
 							<input type="text" name="variant_name" disabled class="form-control d-none" value="<?php echo $variant_name; ?>" id="variant_name" aria-describedby="variant_nameHelp" placeholder="variant name"/>
-							<select name="supplierId" class="form-control">
+							<select name="productVariantId" class="form-control">
 <?php 
 								$productVariant = new ProductVariant($db);
 								//$product->id =!empty($_GET["product_id"])?$_GET["product_id"]:""; 
@@ -171,7 +169,7 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 					<div class="form-group">
 						<div class="row">
 						<div class="col-12 col-md-4 ">
-							<label class="dyn-text" for="name">Name</label>
+							<label class="dyn-text" for="name">Supplier </label>
 							</div>
 						<div class="col-12 col-md-8">
 							<input type="text" name="supplierIdB" class="form-control d-none" value="<?php echo $supplierId; ?>" id="supplierId" aria-describedby="supplierIdHelp" placeholder="supplier Id"/>
@@ -208,7 +206,7 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 					<div class="form-group">
 						<div class="row">
 							<div class="col-12 col-md-4 ">
-								<label class="dyn-text" for="name">Name</label>
+								<label class="dyn-text" for="name">Stock Qty</label>
 							</div>
 							<div class="col-12 col-md-8">
 								<input type="number" name="stockQty" class="form-control" value="<?php echo $stockQty; ?>" id="stockQty" aria-describedby="stockQtyHelp" placeholder="stockQty"/>

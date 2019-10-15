@@ -39,6 +39,7 @@ class ProductStock{
 			$this->id=htmlspecialchars(strip_tags($this->supplierId));
 			$stmt->bindParam(':supplierId', $this->supplierId);
 		}
+		//echo $query;
         $stmt->execute();
         return $stmt;
 	}

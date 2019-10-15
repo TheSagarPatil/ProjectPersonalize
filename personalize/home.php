@@ -5,7 +5,6 @@ $database = new Database();
 $db = $database->nconnect();
 $productVariant = new ProductVariant($db);
 include_once 'commonfe.php';
-
 ?>
 <body>
   <div class="container">
@@ -33,14 +32,14 @@ include_once 'commonfe.php';
 ?>
 		<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
 		<div class="card" style="max-width: 18rem;">
-		  <img class="card-img-top" src="..." alt="Card image cap">
+		  <img class="card-img-top" src="<?php echo $id;?>.jpg" alt="Card image cap">
 		  <div class="card-body">
 			<h5 class="card-title"><?php echo $name;?> : <?php echo $variant_name;?></h5>
 			<h6 class="card-subtitle mb-2 text-muted"><?php echo $name;?></h6>
 			<input name="variant_id" type="hidden" value="<?php echo $id;?>"/>
 			<input name="product_name" type="hidden" value="<?php echo $product_id;?>"/>
 			<p class="card-text"><?php echo $variant_description;?></p>
-			<a href="order_product.php?productId=<?php echo $product_id;?>&variantId=<?php echo $id;?>" class="card-link">View Product</a>
+			<a href="view_product.php?productId=<?php echo $product_id;?>&variantId=<?php echo $id;?>" class="card-link">View Product</a>
 		  </div>
 		</div>
 		</div>

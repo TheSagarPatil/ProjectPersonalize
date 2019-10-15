@@ -31,9 +31,11 @@ isCancelled
         $this->conn = $db;
     }
     public function getRecordList(){
-		$Byid =!empty($this->id)?"where `o`.`id`=:Id":"";
-		$Byname =!empty($this->name)?"where `c`.`name` like '%".$this->name."%' ":"";
-		$ByEmpId =!empty($this->employeeId)?"where `o`.`employeeId` = ". $this->employeeId:"";
+		
+		
+		//$Byname =!empty($this->name)?"where `c`.`first_name` like '%".$this->name."%' ":"";
+		$Byid =!empty($this->id)?"and `o`.`id`=:Id":"";
+		$ByEmpId =!empty($this->employeeId)?" AND `o`.`employeeId` = ". $this->employeeId:"";
 		$query = "SELECT `o`.`id`, 
 					`o`.`productVariantId`,
 					`pv`.`variant_name`, 
@@ -42,13 +44,14 @@ isCancelled
 					`pv`.`product_id`, 
 					`o`.`qty`, 
 					`o`.`customerId`, 
-					`o`.`supplierId`, 
+					`o`.`supplierId`,
+                    `sup`.`name` as `supplierName`,
 					`o`.`isCancelled`, 
 					`o`.`orderDate`,
 					`o`.`employeeId`,
 					`e`.`name` as `employeeName`,
-					`c`.`name` as `customerName` ,
-					`c`.`addressLine1` as `customerAddressLine1` 
+					`c`.`first_name` as `customerName` ,
+					`c`.`Address` as `customerAddressLine1` 
 					FROM `tbl_order` as `o` 
 					left join `tbl_customer` as `c` 
 					ON `c`.`id` = `o`.`customerId`
@@ -56,8 +59,12 @@ isCancelled
 					on `pv`.`id` = `o`.`productVariantId`
 					left join `tbl_employee` as e 
 					on `e`.`id` = `o`.`employeeId`
-				{$Byid} {$Byname} {$ByEmpId}";
+					left join `tbl_supplier` as `sup`
+					on `sup`.`id` = `o`.`supplierId`
+					where `c`.`first_name` like '%".$this->name."%'
+				{$Byid} {$ByEmpId}";
         $stmt = $this->conn->prepare($query);
+		//echo $query;
         $this->id=htmlspecialchars(strip_tags($this->id));
 		if(isset($this->id))
 			$stmt->bindParam(':Id', $this->id);

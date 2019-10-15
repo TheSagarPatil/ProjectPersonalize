@@ -13,13 +13,22 @@ if(isset($_POST["Save"])){
 	$productStock->productVariantId = isset($_POST["productVariantId"])?$_POST["productVariantId"]:"";
 	$productStock->supplierId= isset($_POST["supplierId"])?$_POST["supplierId"]:"";
 	$productStock->stockQty= isset($_POST["stockQty"])?$_POST["stockQty"]:"";
-	$query = "";
-	$result = $productVariant->getRecordList();
+	
+	$result = $productStock->getRecordList();
 	$num = $result->rowCount();
-	//echo "num".$num;
+	echo "num".$num;
 	if($num > 0){
 		$msg = $productStock->updateRecord();
+		while($row = $result->fetch(PDO::FETCH_ASSOC)){
+			extract($row);
+			echo "<br/>";
+			echo $supplierId;
+			echo $productVariantId;
+			echo $stockQty;
+		}
+
 		header("Location: productStockView.php?msg=".$msg);
+		
 	}else{
 		$msg = $productStock->saveRecord();
 		header("Location: productStockView.php?msg=".$msg);

@@ -2,12 +2,18 @@
 class Customer{
     private $conn;
     private $table_name = "tbl_customer";
-	public $id;
-	public $name;
+	public $first_name;
+	public $last_name;
 	public $email;
-	public $pswd;
-	public $addressLine1;
-	public $pincode;
+	
+	public $gender;
+	public $contact_no;
+	public $user_name;
+	public $password;
+	public $Address;
+	public $city;
+	public $state;
+	public $pin_code;
 	/*
 	SELECT `id`, `name`, `email`, `pswd`, `addressLine1`, `pincode` FROM `tbl_customer` WHERE 1
 	SELECT `id`, `name`, `email`, `pswd`, `addressLine1`, `pincode` FROM `tbl_customer` WHERE `id`=1
@@ -21,19 +27,51 @@ class Customer{
     }
     public function getRecordList(){
 		$Byid =!empty($this->id)?"where `id`=:Id":"";
-		$Byname =!empty($this->name)?"where `name` like '%".$this->name."%' ":"";
-		$query = "SELECT `id`, `name`, `email`, `pswd`, `addressLine1`, `pincode`
+		$Byname =!empty($this->name)?"where `first_name` like '%".$this->name."%' ":"";
+		$query = "SELECT `id`,`first_name`,
+					`last_name`,
+					`email`,
+					`gender`,
+					`contact_no`,
+					`user_name`,
+					`password`,
+					`Address`,
+					`city`,
+					`state`,
+					`pin_code`
 				FROM `tbl_customer` 
 				{$Byid} {$Byname}";		
         $stmt = $this->conn->prepare($query);
-        $this->id=htmlspecialchars(strip_tags($this->id));
-		if(isset($this->id))
+		if(isset($this->id)){
+			$this->id=htmlspecialchars(strip_tags($this->id));
 			$stmt->bindParam(':Id', $this->id);
+		}
         $stmt->execute();
         return $stmt;
 	}
 	public function saveRecord(){
-		$query = "INSERT INTO `tbl_customer`(`name`, `email`, `pswd`, `addressLine1`, `pincode`) VALUES (:name, :email, :pswd, :addressLine1, :pincode)";
+		$query = "INSERT INTO `tbl_customer`(`first_name`,
+					`last_name`,
+					`email`,
+					`gender`,
+					`contact_no`,
+					`user_name`,
+					`password`,
+					`Address`,
+					`city`,
+					`state`,
+					`pin_code`
+					) VALUES (:first_name,
+					:last_name,
+					:email,
+					:gender,
+					:contact_no,
+					:user_name,
+					:password,
+					:Address,
+					:city,
+					:state,
+					:pin_code)";
 		$stmt = $this->conn->prepare($query);
 		$this->name=htmlspecialchars(strip_tags($this->name));
 		$this->email=htmlspecialchars(strip_tags($this->email));
@@ -53,20 +91,24 @@ class Customer{
 		return $msg;
 	}
 	public function updateRecord(){
-		$query = "UPDATE `tbl_customer` SET `name`=:name, `email`=:email, `pswd`=:pswd, `addressLine1`=:addressLine1, `pincode`=:pincode WHERE `id`=:id";
+		$query = "UPDATE `tbl_customer` SET `email`=:email, `password`=:password, `Address`=:Address, `pin_code`=:pin_code ,`city`=:city, `state`=:state
+		WHERE `id`=:id";
 		$stmt = $this->conn->prepare($query);
 		$this->id=htmlspecialchars(strip_tags($this->id));
-		$this->name=htmlspecialchars(strip_tags($this->name));
 		$this->email=htmlspecialchars(strip_tags($this->email));
-		$this->pswd=htmlspecialchars(strip_tags($this->pswd));
-		$this->addressLine1=htmlspecialchars(strip_tags($this->addressLine1));
-		$this->pincode=htmlspecialchars(strip_tags($this->pincode));
+		$this->password=htmlspecialchars(strip_tags($this->password));
+		$this->Address=htmlspecialchars(strip_tags($this->Address));
+		$this->pin_code=htmlspecialchars(strip_tags($this->pin_code));
+		$this->city=htmlspecialchars(strip_tags($this->city));
+		$this->state=htmlspecialchars(strip_tags($this->state));
 		$stmt->bindParam(':id', $this->id);
-		$stmt->bindParam(':name', $this->name);
 		$stmt->bindParam(':email', $this->email);
-		$stmt->bindParam(':pswd', $this->pswd);
-		$stmt->bindParam(':addressLine1', $this->addressLine1);
-		$stmt->bindParam(':pincode', $this->pincode);
+		$stmt->bindParam(':password', $this->password);
+		$stmt->bindParam(':Address', $this->Address);
+		$stmt->bindParam(':pin_code', $this->pin_code);
+		$stmt->bindParam(':state', $this->state);
+		$stmt->bindParam(':city', $this->city);
+		
 		if($stmt->execute()){
 			$msg="success";
 		}else{

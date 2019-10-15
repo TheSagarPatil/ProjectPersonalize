@@ -69,7 +69,7 @@
 	if( isset($_POST["searchname"]) ){
 		echo "search_term : " . $_POST["searchname"];
 		$order->name = $_POST["searchname"];
-		//$productVariant->product_name = $_POST["searchname"];
+		$order->employeeId = $_POST["employeeId"];
 	}
 	$result = $order->getRecordList();
     $num = $result->rowCount();
@@ -193,7 +193,7 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 							<label class="dyn-text" for="supplierId">Supplier Id</label>
 							</div>
 						<div class="col-12 col-md-8">
-							<input  type="text" name="supplierIdB" class="form-control d-none" value="<?php echo $supplierId; ?>" id="supplierId" aria-describedby="supplierIdHelp" placeholder="supplier Id">
+							<input  type="text" name="supplierIdB" class="form-control d-none" value="<?php $stk_supplierId= $supplierId; echo $supplierId; ?>" id="supplierId" aria-describedby="supplierIdHelp" placeholder="supplier Id">
 							<select class="form-control" name="supplierId" disabled>
 <?php 
 								$stock = new ProductStock($db);
@@ -206,13 +206,13 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 									while($row = $result->fetch(PDO::FETCH_ASSOC)){
 										extract($row);
 ?>
-								<option value="<?php echo $stk_supplierId ?>"
+								<option value="<?php echo $supplierId ?>"
 									<?php
 										$selectflg;
 										$selectflg = ($supplierId == $stk_supplierId)? "selected":"";
 										echo $selectflg;
 									?>
-								><?php echo "#".$stk_supplierId." ".$name ?></option>
+								><?php echo "#".$stk_supplierId." ".$supplierName ?></option>
 <?php
 									}
 								}

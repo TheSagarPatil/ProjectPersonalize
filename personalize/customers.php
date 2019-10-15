@@ -82,13 +82,13 @@
 				<td><a href="customers.php?id=<?php echo $id; ?>"><?php echo $id; ?></a>
 				</td>
 				<td>
-				<?php echo $name; ?>
+				<?php echo $first_name . " " . $last_name; ?>
 				</td>
 				<td>
 				<?php echo $email; ?>
 				</td>
 				<td>
-				<?php echo $pincode; ?>
+				<?php echo $pin_code; ?>
 				</td>
 			</tr>
 <?php 
@@ -161,8 +161,8 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 							<label class="dyn-text" for="variant_name">Name</label>
 							</div>
 						<div class="col-12 col-md-8">
-							<input type="text" name="name" class="form-control" value="<?php echo $name; ?>" id="name" aria-describedby="nameHelp" placeholder="Customer Name">
-							<small id="nameHelp" class="form-text text-muted">Employee name goes here.</small>
+							<input type="text" name="name" class="form-control" value="<?php echo $first_name. " " .$last_name; ?>" id="name" aria-describedby="nameHelp" placeholder="Customer Name">
+							<small id="nameHelp" class="form-text text-muted">Customer name goes here.</small>
 						</div>
 						</div>
 					</div>
@@ -187,7 +187,7 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 							<label class="dyn-text" for="password">Password</label>
 							</div>
 						<div class="col-12 col-md-8">
-							<input type="password" name="password" class="form-control" value="<?php echo $pswd; ?>" id="password" aria-describedby="passwordHelp" placeholder="password">
+							<input type="password" name="password" class="form-control" value="<?php echo $password; ?>" id="password" aria-describedby="passwordHelp" placeholder="password">
 							<small id="passwordHelp" class="form-text text-muted">password goes here.</small>
 						</div>
 						</div>
@@ -199,7 +199,7 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 							<label class="dyn-text" for="variant_name">Address Line 1</label>
 							</div>
 						<div class="col-12 col-md-8">
-							<input type="text" name="addressLine1" class="form-control" value="<?php echo $addressLine1; ?>" id="name" aria-describedby="addressLine1Help" placeholder="Address Line1">
+							<input type="text" name="Address" class="form-control" value="<?php echo $Address; ?>" id="name" aria-describedby="addressLine1Help" placeholder="Address Line1">
 							<small id="addressLine1Help" class="form-text text-muted">addressLine1 goes here.</small>
 						</div>
 						</div>
@@ -209,11 +209,51 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 					<div class="form-group">
 						<div class="row">
 						<div class="col-12 col-md-4 ">
-							<label class="dyn-text" for="variant_name">pincode</label>
+							<label class="dyn-text" for="variant_name">City</label>
 							</div>
 						<div class="col-12 col-md-8">
-							<input type="text" name="pincode" class="form-control" value="<?php echo $pincode; ?>" id="name" aria-describedby="pincodeHelp" placeholder="Pincode">
-							<small id="pincodeHelp" class="form-text text-muted">pincode goes here.</small>
+							<input type="text" name="city" class="form-control" value="<?php echo $city; ?>" id="name" aria-describedby="pincodeHelp" placeholder="City">
+							<small id="pincodeHelp" class="form-text text-muted">City goes here.</small>
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-6">
+					<div class="form-group">
+						<div class="row">
+						<div class="col-12 col-md-4 ">
+							<label class="dyn-text" for="name">State </label>
+							</div>
+						<div class="col-12 col-md-8">
+						<select name="state" class="form-control">
+<?php 
+				
+				$wcr=array('Maharashtra','Gujarat','Bengal');
+				foreach($wcr as $key => $value):
+						
+					if($value == $state){
+						echo '<option value="'.$value.'" key="'.$key.'" selected>'.$value.'</option>';
+					}else{
+						echo '<option value="'.$value.'" key="'.$key.'">'.$value.'</option>';
+					}
+				endforeach;
+?>
+
+							</select >
+							<small id="stateHelp" class="form-text text-muted">State goes here.</small>
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-6">
+					<div class="form-group">
+						<div class="row">
+						<div class="col-12 col-md-4 ">
+							<label class="dyn-text" for="pin_code">pincode</label>
+							</div>
+						<div class="col-12 col-md-8">
+							<input type="text" name="pin_code" class="form-control" value="<?php echo $pin_code; ?>" id="name" aria-describedby="pin_codeHelp" placeholder="Pincode">
+							<small id="pin_codeHelp" class="form-text text-muted">pincode goes here.</small>
 						</div>
 						</div>
 					</div>
@@ -239,24 +279,18 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 	<script>
 	$("[name='new']").click(function(){
 		$("[name='id']").val("").attr("disabled","true");
-		$("[name='name'], [name='privilage'], [name='email'], [name='password'], [name='photo']").val("");
+		$("[name='city'], [name='state'], [name='Address'], [name='pin_code'], [name='email'], [name='password']").val("");
 	});
 	$('[name="Save"]').on("click", function(){
 		if (
-			$.trim($('[name="name"]').val())=="" ||
-			$.trim($('[name="privilage"]').val()) =="" ||
+			$.trim($('[name="city"]').val())=="" ||
+			$.trim($('[name="state"]').val()) =="" ||
+			$.trim($('[name="Address"]').val()) =="" ||
+			$.trim($('[name="pin_code"]').val()) =="" ||
 			$.trim($('[name="email"]').val()) == "" ||
-			$.trim($('[name="password"]').val()) == "" ||
-			$.trim($('[name="photo"]').val()) == "" ){
+			$.trim($('[name="password"]').val()) == "" {
 			alert("At least 1 field is empty. Please fill it.");
 			return false;
-		}else{
-			var ext = $('[name="photo"]').val().split('.').pop().toLowerCase();
-			if($.inArray(ext, ['gif', 'jpeg', 'png', 'jpg']) == -1) {
-				alert("Invalid file");
-				$('[name="photo"]').val('');
-				return false;
-			}
 		}
 	});
 	</script>

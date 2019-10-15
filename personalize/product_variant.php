@@ -16,7 +16,7 @@ class ProductVariant{
 		$Byid =!empty($this->id)?"where `tbl_product_variant`.`id`= :Id":"";
 		//$Byname =!empty($this->product_name)?"where `tbl_product`.`name`= :pname":"";
 		$ByProductid =!empty($this->product_id)?" AND `tbl_product_variant`.`product_id`= :product_id":"";
-		$Byname =!empty($this->variant_name)?"where `tbl_product_variant`.`variant_name` like '%".$this->variant_name."%' ":"";
+		$Byname =!empty($this->variant_name)?"where `tbl_product`.`name` like '%".$this->variant_name."%' OR `tbl_product_variant`.`variant_name` like '%".$this->variant_name."%' ":"";
 		$query = "SELECT `tbl_product_variant`.`id`, 
 					`tbl_product`.`name`, `tbl_product_variant`.`product_id`, 
 					`tbl_product_variant`.`variant_name`,
