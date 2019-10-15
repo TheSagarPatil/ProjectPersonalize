@@ -1,5 +1,6 @@
 <?php
     include_once 'db.php';
+	include_once 'corpNavbar.php';
     include_once 'product.php';
     //instanciate db and connect
     $database = new Database();
@@ -132,7 +133,6 @@ $('#myAlert').on('closed.bs.alert/close.bs.alert', function () {
 				<input type="button" class="btn btn-dark" name="new" value="New Record"/>
 				<input type="button" class="btn btn-dark" name="Reset" value="Reset Values"/>
 				<input type="submit" class="btn btn-dark" name="Save" value="Save Record"/>
-				<input type="submit" class="btn btn-dark" name="Delete" value="Delete Record"/>
 				</div>
 			</div>
 			</form>

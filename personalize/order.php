@@ -1,14 +1,24 @@
 <?php
-class Product{
+class Order{
     private $conn;
     private $table_name = "tbl_supplier";
 	public $id;
+	public $productVariantId;
+	public $qty;
+	public $customerId;
+	public $supplierId;
+	public $isCancelled;
+	
 	public $name;
-	public $email;
-	public $pswd;
-	public $addressLine1;
-	public $pincode;
+		
 	/*
+	id
+productVariantId
+qty
+customerId
+supplierId
+isCancelled 
+
 	SELECT `id`, `productVariantId`, `qty`, `customerId`, `supplierId`, `isCancelled` FROM `tbl_order` WHERE 1
 	Select `o`.`id`, `o`.`productVariantId`, `o`.`qty`, `o`.`customerId`, `o`.`supplierId`, `o`.`isCancelled`, `c`.`name` as `customerName` from `tbl_order` as `o` left join `tbl_customer` as `c` on `c`.`id` = `o`.`customerId`
 	SELECT `id`, `productVariantId`, `qty`, `customerId`, `supplierId`, `isCancelled` FROM `tbl_order` WHERE `id`=1
@@ -21,13 +31,32 @@ class Product{
         $this->conn = $db;
     }
     public function getRecordList(){
-		$Byid =!empty($this->id)?"where `id`=:Id":"";
+		$Byid =!empty($this->id)?"where `o`.`id`=:Id":"";
 		$Byname =!empty($this->name)?"where `c`.`name` like '%".$this->name."%' ":"";
-		$query = "SELECT `o`.`id`, `o`.`productVariantId`, `o`.`qty`, `o`.`customerId`, `o`.`supplierId`, `o`.`isCancelled`, `c`.`name` as `customerName` 
+		$ByEmpId =!empty($this->employeeId)?"where `o`.`employeeId` = ". $this->employeeId:"";
+		$query = "SELECT `o`.`id`, 
+					`o`.`productVariantId`,
+					`pv`.`variant_name`, 
+					`pv`.`variant_image`, 
+					`pv`.`mrp`, 
+					`pv`.`product_id`, 
+					`o`.`qty`, 
+					`o`.`customerId`, 
+					`o`.`supplierId`, 
+					`o`.`isCancelled`, 
+					`o`.`orderDate`,
+					`o`.`employeeId`,
+					`e`.`name` as `employeeName`,
+					`c`.`name` as `customerName` ,
+					`c`.`addressLine1` as `customerAddressLine1` 
 					FROM `tbl_order` as `o` 
 					left join `tbl_customer` as `c` 
 					ON `c`.`id` = `o`.`customerId`
-				{$Byid} {$Byname}";		
+					left join `tbl_product_variant` as `pv`
+					on `pv`.`id` = `o`.`productVariantId`
+					left join `tbl_employee` as e 
+					on `e`.`id` = `o`.`employeeId`
+				{$Byid} {$Byname} {$ByEmpId}";
         $stmt = $this->conn->prepare($query);
         $this->id=htmlspecialchars(strip_tags($this->id));
 		if(isset($this->id))
@@ -55,21 +84,17 @@ class Product{
 		return $msg;
 	}
 	public function updateRecord(){
-		$query = "UPDATE `tbl_supplier` 
-			SET `name`=:name, `email`=:email, `pswd`=:pswd, `addressLine1`=:addressLine1, `pincode`=:pincode 
-			`productVariantId`=:productVariantId, `qty`=:qty, `customerId`=:customerId, `supplierId`=:supplierId, `isCancelled`=:isCancelled
+		$query = "UPDATE `tbl_order` 
+			SET 
+			`productVariantId`=:productVariantId, `isCancelled`=:isCancelled
 			WHERE `id`=:id";
 		$stmt = $this->conn->prepare($query);
 		$this->productVariantId=htmlspecialchars(strip_tags($this->productVariantId));
-		$this->qty=htmlspecialchars(strip_tags($this->qty));
-		$this->customerId=htmlspecialchars(strip_tags($this->customerId));
-		$this->supplierId=htmlspecialchars(strip_tags($this->supplierId));
+		$this->id=htmlspecialchars(strip_tags($this->id));
 		$this->isCancelled=htmlspecialchars(strip_tags($this->isCancelled));
 		$stmt->bindParam(':productVariantId', $this->productVariantId);
-		$stmt->bindParam(':qty', $this->qty);
-		$stmt->bindParam(':customerId', $this->customerId);
-		$stmt->bindParam(':supplierId', $this->supplierId);
 		$stmt->bindParam(':isCancelled', $this->isCancelled);
+		$stmt->bindParam(':id', $this->id);
 		if($stmt->execute()){
 			$msg="success";
 		}else{
@@ -78,7 +103,7 @@ class Product{
 		return $msg;
 	}
 	public function deleteRecord(){
-		$query = "DELETE FROM `tbl_supplier` WHERE `id`=:id";
+		$query = "DELETE FROM `tbl_order` WHERE `id`=:id";
 		$stmt = $this->conn->prepare($query);
 		$this->id=htmlspecialchars(strip_tags($this->id));
 		$stmt->bindParam(':id', $this->id);
@@ -88,6 +113,30 @@ class Product{
 			$msg="fail";
 		}
 		return $msg;
+	}
+	public function getlastWeekOrderCount(){
+		$query = "select count(`o`.`id`) as `orderNum`
+				from `tbl_order` as `o`
+				where `o`.`orderDate` between date_sub(now() , INTERVAL 1 week) and now()";
+		$stmt = $this->conn->prepare($query);
+		$stmt->execute();
+		return $stmt;
+	}
+	public function getPendingOrderList(){
+		$query = "SELECT `o`.`id` 
+					FROM `tbl_order` as `o` 
+					where `o`.`employeeId` IS NULL";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+	}
+	public function setEmployeeForDelivery(){
+		$query = "update tbl_order set employeeId = :employeeId where id=:orderId";
+		
+		$stmt=$this->conn->prepare($query);
+		$stmt->bindParam(":employeeId", $this->employeeId);
+		$stmt->bindParam(":orderId", $this->orderId);
+		$stmt->execute();
 	}
 }	
 ?>

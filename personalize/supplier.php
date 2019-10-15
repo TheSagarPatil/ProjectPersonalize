@@ -1,5 +1,5 @@
 <?php
-class Product{
+class Supplier{
     private $conn;
     private $table_name = "tbl_supplier";
 	public $id;
@@ -22,6 +22,18 @@ class Product{
     public function getRecordList(){
 		$Byid =!empty($this->id)?"where `id`=:Id":"";
 		$Byname =!empty($this->name)?"where `name` like '%".$this->name."%' ":"";
+		$query = "SELECT `id`, `name`, `email`, `pswd`, `addressLine1`, `pincode`
+				FROM `tbl_supplier` 
+				{$Byid} {$Byname}";		
+        $stmt = $this->conn->prepare($query);
+        $this->id=htmlspecialchars(strip_tags($this->id));
+		if(isset($this->id))
+			$stmt->bindParam(':Id', $this->id);
+        $stmt->execute();
+        return $stmt;
+	}
+	public function getRecordListByVariantStock(){
+		$Byid =!empty($this->id)?"where `id`=:Id":"";
 		$query = "SELECT `id`, `name`, `email`, `pswd`, `addressLine1`, `pincode`
 				FROM `tbl_supplier` 
 				{$Byid} {$Byname}";		
@@ -85,6 +97,18 @@ class Product{
 			$msg="fail";
 		}
 		return $msg;
+	}
+	public function login(){
+		$query = "SELECT `id`, `name`, `email`, `pswd`, `addressLine1`, `pincode`
+				FROM `tbl_supplier` 
+				where email=:email and pswd=:pswd";		
+        $stmt = $this->conn->prepare($query);
+        $this->email=htmlspecialchars(strip_tags($this->email));
+		$this->pswd =htmlspecialchars(strip_tags($this->pswd));
+		$stmt->bindParam(':email', $this->email);
+		$stmt->bindParam(':pswd', $this->pswd);
+        $stmt->execute();
+        return $stmt;
 	}
 }	
 ?>

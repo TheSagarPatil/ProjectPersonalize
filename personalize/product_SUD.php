@@ -12,10 +12,10 @@ if(isset($_POST["Save"])){
 	$product->name = isset($_POST["name"])?$_POST["name"]:"";
 	$query = "";
 	if($product->id==""){
-		echo "saving";
+		echo "saving product";
 		$msg = $product->saveRecord();
 	}else{
-		echo "updating";
+		echo "updating product";
 		$msg = $product->updateRecord();
 	}
 }

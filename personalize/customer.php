@@ -1,5 +1,5 @@
 <?php
-class Product{
+class Customer{
     private $conn;
     private $table_name = "tbl_customer";
 	public $id;
@@ -85,6 +85,12 @@ class Product{
 			$msg="fail";
 		}
 		return $msg;
+	}
+	public function getCustomerCountLastWeek(){
+		$query = "select count(Id) as `customerCount` from tbl_customer";
+		$stmt = $this->conn->prepare($query);
+		$stmt->execute();
+		return $stmt;
 	}
 }	
 ?>

@@ -1,0 +1,56 @@
+Orders count by week
+SELECT count(*) as numRecords, YEARWEEK(`orderDate`) as weekNum
+FROM `tbl_order`
+GROUP BY YEARWEEK(`orderDate`)
+
+
+
+Orders last 7 days
+SELECT count(*) as numRecords
+FROM `tbl_order`
+WHERE `orderDate` > (CURRENT_DATE() - 7 )
+
+Revenue by product
+
+SELECT `p`.`id`,`p`.`name`,count(`p`.`id`) as numRecords, sum(`pv`.`mrp`) as `revenue`
+FROM `tbl_order` as `o` left join `tbl_product_variant` as `pv`
+on `pv`.`id` = `o`.`productVariantId`
+left join `tbl_product` as `p`
+on `p`.`id` = `pv`.`product_Id`
+GROUP BY `p`.`Id`
+
+
+employee job asg
+
+
+o = [{
+"orderId":1,
+"employeeId":"NULL"
+},{
+"orderId":2,
+"employeeId":"NULL"
+},{
+"orderId":3,
+"employeeId":"NULL"
+},{
+"orderId":7,
+"employeeId":"NULL"
+},{
+"orderId":5,
+"employeeId":"NULL"
+},{
+"orderId":6,
+"employeeId":"NULL"
+}
+];
+e = [{"employeeId":1},{"employeeId":3},{"employeeId":4}];
+
+var j;
+j=0;
+for(var i=0; i<o.length;i++){
+	if(j>=e.length-1 && i!=o.length-1){
+		j=0;
+	}debugger;
+	o[i].employeeId=e[j].employeeId;
+	j++;
+}
