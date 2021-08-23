@@ -1,10 +1,12 @@
+<?php
+session_start();
+?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="corphome.php">Personalize</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 <?php 
-session_start();
 if(isset($_SESSION["loginMode"])){
 	if($_SESSION["loginMode"] != ""){
 ?>
@@ -160,8 +162,10 @@ if(isset($_SESSION["loginMode"])){
 
 	}
 }else{
-	if($_SERVER['PHP_SELF'] != "/personalize/employeeLogin.php"){
-		header("Location: employeeLogin.php");
+	//if($_SERVER['PHP_SELF'] != "/employeelogin.php"){
+	if($_SERVER['PHP_SELF'] != "/personalize/ProjectPersonalize/personalize/employeelogin.php"){
+		echo "<script>window.location.href = '/personalize/ProjectPersonalize/personalize/employeelogin.php'</script>";
+		//echo "<script>window.location.href = '/employeelogin.php'</script>";
 	}
 }
 ?>
@@ -176,5 +180,14 @@ if(isset($_SESSION["loginMode"])){
 }
 .breadcrumb .dropdown{
 	display: inline-block;
+}
+body{
+	font-family:'SaralW60-Regular','Fira Sans'!important;
+}
+.card-header, .card-body, .card-footer{
+	background-color:transparent;
+}
+.card{
+	background-color:#fafafa;
 }
 </style>

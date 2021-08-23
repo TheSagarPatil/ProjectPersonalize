@@ -1,0 +1,47 @@
+/* 
+Arduino test-code for CanSat course at NAROM 2014
+This code is intended to be used for an easy introduction to the Arduino board. 
+The program reads data from 2 digital and 2 analog ports and prints the values to the monitor with a sampling speed of 1 Hz.
+*/
+
+int counter = 0, analog0, analog1; //Create variables as integers
+float analog0_volt, analog1_volt;  //Create variables as floating numbers.
+boolean digital2, digital3;        //Create variables as boolean (HIGH or LOW, TRUE or FALSE)
+
+
+void setup(){                //Setup. This section runs only once.
+  Serial.begin(9600);        //Sets the communication speed between PC and Arduino Uno to 9600 baud.                 
+  pinMode(2, INPUT);         //Sets the digital 2 pin to input mode (High impedance).
+  pinMode(3, INPUT_PULLUP);  //Sets the digital 2 pin to input mode with "Pull Up" (High impedance and Normal High).
+  delay(500);                //0.5 seconds break.
+}                            //end of setup
+
+void loop(){                       //Loop. This section runs in an unending loop.                     
+  //Collect data from all the inputs
+  analog0 = analogRead(A0);        //Reads data from analog port 0 and stores it in the variable "analog0". 
+  analog1 = analogRead(A1);        //Reads data from analog port 1 and stores it in the variable "analog1".
+  digital2 = digitalRead(2);       //Reads data from digital port 2 and stores it in the variable "digital2".
+  digital3 = digitalRead(3);       //Reads data from digital port 3 and stores it in the variable "digital3".
+  //Note the difference between pin nubering in analog (Ax) and digital (x).   
+  
+  //Convertion from digital value to voltage value
+  analog0_volt = ((float)analog0 / 1023) * 5;   //Scales from 0-1023 (integers) to 0.0-5.0 (decimal numbers). 0=0V 1023=5V.
+  analog1_volt = (analog1 / 1023.0) * 5;        //Does the same as the previous line. Notice the difference in the syntax.
+
+  //Print out data to the monitor
+  Serial.print(counter);           //Prints out the variable "counter".    
+  Serial.print("  - Analog0: ");   //Prints the text inside the brackets "__".
+  Serial.print(analog0_volt);      //Prints out the variable "analog0_volt".
+  Serial.print("   Analog1: ");    //Prints the text.
+  Serial.print(analog1_volt);      //Prints out the variable "analog1_volt".
+  Serial.print("   Digital2: ");   //Prints the text.
+  Serial.print(digital2);          //Prints out the variable "digital2".
+  Serial.print("   Digital3: ");   //Prints the text.
+  Serial.println(digital3);        //Prints out the variable "digital3" and ends with a line shift.
+  
+  delay(1000);                     //Puts in a delay for 1000ms (1 second). Stop-whait1000ms-continue.
+  counter++;                       //Increments the variable "counter" with 1. This is the same as "counter = counter + 1" ([NewValue] = [OldValue] + 1).                          
+
+} //end of function (Returns to start of loop).
+
+  //The program inside the loop function will continue forever and ever, or intil you cut the power.. Whatever comes first..

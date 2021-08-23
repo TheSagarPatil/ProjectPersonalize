@@ -112,6 +112,6 @@
 .card-body,
 .card-footer{
 	border:0;
-	background-color:#fff;
+	background-color:transparent;
 }
 </style>

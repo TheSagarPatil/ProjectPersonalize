@@ -1,0 +1,141 @@
+Description	
+Description: Many residential society administrations, tolls, business complexes and parking spaces in India lack an automated system for car parking and vehicle monitoring. Most of the commercial and residential places face an impending problem of illegal car/vehicle parking inside their premises. This issue is not bounded to just parking, but also adds to the security concerns inside those establishments. Though there are solutions that exist in the market, the affordability comes into question. In this regard, we would like to have an affordable solution that caters to the Indian markets Expectation: For the team choosing this topic, we expect to have a working model / infrastructure of the solution wherein, when a vehicle passes through a checkpost and the solution identifies as many features as it can regarding the situation of the vehicle. All Teams will be provided with an amount of video footage. The teams must build a fictitous database based on the vehicles appering in footage and demonstrate the problems that they are able to solve/automate in existing infrastucture. (For example, if a team is trying to solve problems of a residential complex, they might create a database of some of the vehicles appearing in the footage and list them as residents and others not registered in the database to be considered as visitors). Applicants will be provided video data through the following website link. http://mixorg.com/competitions/SIH-2020/registration Each team is supposed to download the data and annotate it according to the features they are going to build. Teams must come up with new features for monetization of their business model and must build machine learning models (for preliminary shortlisting and finals) and required mobile/web applications(for finals only) reflecting the same features . Teams are requested to share the annotations done by them on the video data and the pattern of annotation. Teams are requested to build the machine learning model and share a working code on github(privately with @chetanbansiwal or publically) Teams will be judged on the following grounds in the same order as written for the next round : 1. Accuracy of the model in performing the expected task. 2. Speed of the model in performing the expected task. 3. The precision followed during annotation of data. 4. The relevance of annotations considering the problem the team is expecting to solve with it.
+Organization	MIXORG
+Category	Software
+Domain Bucket	Security & Surveillance
+Youtube Link	
+Dataset Link	
+
+#CHATBOTS
+Description	
+For medical imaging device, a good user experience requires to guide technologist to the specific functions they need most and help them in quick decision making during medical imaging/interventional procedures. Instructions provided are often tedious to read. There is need of enhanced customer interaction with intelligent assistant & response. Chatbot can help with artificial intelligence to process language, enabling them to understand human speech or text. They can decipher verbal or written questions and provide responses with appropriate information or direction. Develop Virtual Assistant for medical device workflow user support with below requirements and constraints- Essential requirements: Front-end mobile & web based interface:-Connects to a variety of channels, such as websites, documented script and messaging through which users interact with the virtual agent. Natural language processing or any other intelligent technique to understand user work intent, collect relevant parameters from screen, user clicks, previous workflow, words and sentences, and map those to suggestions/insights for user. Key Constraints: Standalone application with web interface Ability to adapt to different screen sizes and orientations, security, and network bandwidth. App data storage on cloud/server (thin client)
+Organization	GE Healthcare
+Category	Software
+Domain Bucket	Healthcare & Biomedical Devices
+Youtube Link	
+Dataset Link	NA
+
+Description	
+Tourism in India is important for the country economy and is growing rapidly. The sector is predicted to grow at an annual rate of 6.9% to rupees 32.05 lakh crore(US$460 billion) by 2028 (9.9% of GDP). In October 2015, India medical tourism sector was estimated to be worth US$3 billion, and it is projected to grow to US$7–8 billion by 2020. In 2014, 184,298 foreign patients traveled to India to seek medical treatment.Students teams are expected to develop a context-based NLP engine to guide the tourists using MindMeld capabilities. MindMeld is a platform to power the next generation of chat and voice assistants. It is an AI platform for building conversational interfaces. Solution Expected: The requirements are to develop a WebEx Team bot capable of NLP to guide tourists. Student teams can choose any one from some of the scenarios that we have listed below. Tourism can be classified into the following sectors and provide help based on the nature of tourism. 1. Cruise Tourism - An itinerary Manager that proposes day-by-day schedule of the cruise with a complete list of attractions at each place along with the route navigation system. 2. Adventure Tourism - Since its adventures the bot must provide a tailor-made experience offering a personalized answer and suitable options based on the situations along with appropriate reminders based on the tourist spot visited. The old-fashioned concept of showcasing only India historical heritage and monuments is changing and people around the world are more interested in ecotourism where they want to see the local flora and fauna. Increasing tourism in the Sundarbans area in West Bengal is an attractive proposition. The region contains the biggest mangrove forest in the world and exotic flora and fauna and the Royal Bengal Tiger. Tech recommendation:   The Conversational AI Playbook can be integrated with Webex Teams and help tourists in the following key areas like Travel Planner – The Chatbot must act as a virtual travel agent who is able to share the suggestions based on the users travel preferences. It should be capable to check the Hotel Room Availability Recommend the right package based on tourist profile. Keep tourist informed about the details of the journey like check ins, flight /Train status etc. Route complex queries to human agents in real time (Adventure Tourism) The evaluations shall be based on the following criteria:  1. Depth and research to understand Indian Tourism Industry (Domain Knowledge) 2. Depth of understanding of Mind meld capabilities & Business model use cases.  4. Depth and understanding of technologies proposed in solution, e.g. Mindmeld & WebEx Teams bot Resources:  https://www.mindmeld.com/docs/integrations/webex_teams.html https://www.mindmeld.com/docs/blueprints/overview.html
+Organization	Cisco DEVNET
+Category	Software
+Domain Bucket	Travel and Tourism
+Youtube Link	
+Dataset Link	NA
+
+Description	
+A mobile application needs to developed to track the registered passengers from resistance to home. The application will register passenger mobile number only for those who are willing to take this service. Passenger will be provided customized offers for Taxi, concessionaires etc. based upon passenger history and facility choices opted by the users. Further a separate module dedicated to VIP passenger facilitation needs to be incorporated. Projects should also have • User friendly UI/UX for Airport passangers. • Digitally Storing and Monitoring overall project related data.
+Organization	Airports Authority of india
+Category	Software
+Domain Bucket	Software - Mobile App development
+Youtube Link	
+Dataset Link	
+
+Description	
+Chat bots in health care may have the potential to provide patients with access to immediate medical information. Health care chat bots could help patients better manage their own health, improve access and timeliness to care. Use of Al based Chat bots for providing health related information.
+Organization	Ministry of Health and Family Welfare
+Category	Software
+Domain Bucket	Healthcare & Biomedical Devices
+Youtube Link	
+Dataset Link	
+
+Description	
+Interactive & user friendly map application for the public to inform police related to crimes and emergencies in real time
+Organization	Bureau of Police Research & Development
+Category	Software
+Domain Bucket	Security & Surveillance
+Youtube Link	
+Dataset Link	NA
+
+Description	
+Efficient and user-friendly Chabot Based Crime Registration & Crime Awareness System
+Organization	Bureau of Police Research & Development
+Category	Software
+Domain Bucket	Software - Web App development
+Youtube Link	
+Dataset Link	NA
+
+
+
+
+
+Description	
+Process Modeling: Develop a Asset Performance Monitoring (APM) platform based on ML algorithms to calculate the real-time reliability and efficiency of the process plant equipments such as heat exchangers, turbines, pumps, motors, compressors, expanders and reacting columns with respect to the design data. Suggestions to optimize the operational parameters of the different equipment’s for getting the maximum possible efficiency in dynamic operational scenario. For ex- Developing the platform that enables the asset performance monitoring via calculation of the heat transfer efficiency of heat exchangers, optimized operational parameters and reliability for the rotating equipments such as turbines, compressors etc.
+Organization	GAIL
+Category	Software
+Domain Bucket	Energy / Renewable Energy
+Youtube Link	https://youtu.be/rFDf8W-H_Yg
+Dataset Link	NA
+
+Description	
+Requirement for solution : • NYKS has 623 district offices and 29 state offices across the country. • NYKS needs of software by which NYKS may take the attendance of the officers working in these districts and States. • The Mobile should collect the attendance based on the location of the officer through GPS system / Geo-Location System and voice recognition or • The software should collect the attendance based on landline telephone number and voice recognition
+Organization	Ministry of Youth Affairs & Sports
+Category	Software
+Domain Bucket	Software - Web App development
+Youtube Link	
+Dataset Link	
+
+Description	
+A mobile application is required that is capable of a.)      Have all the details of the equipment like S/N, Date of Installation etc. by scanning a QR code/ barcode. b.)      Readily access the past service record by scanning a QR code/ barcode. c.)      Entering the details and updating service history on the spot, just after maintenance
+Organization	Airports Authority of india
+Category	Software
+Domain Bucket	Software - Mobile App development
+Youtube Link	
+Dataset Link	
+
+Description	
+Andaman Nicobar Islands is a place of historical as well as tourist importance. Tourism being the only prime industry in these Islands has lot of potential and opportunity and Technology can play a major role in attracting tourist to a large extent. Immersive real-life experience through technologies like Virtual Reality of the scenic extravaganza and under-water wonders of vivid flora and fauna which are displayed in the museums, would certainly give a new dimension to the tourists in realizing the beauty of these Islands. No such VR App is being used as on date for the tourist visiting Islands.
+Organization	Dr. B R Ambedkar Institute of Technology
+Category	Software
+Domain Bucket	Travel and Tourism
+Youtube Link	https://www.youtube.com/watch?v=dw1g7aBpBZs
+Dataset Link	NA
+
+Description	***
+Goa has faced the rage of rains this year and pothole are the biggest problem which government is tackling. Now problem lies in the fact that concerned departments are not able to co-ordinate to resolve the issue. ISSUES (a) Fundamentally there is disconnection between civil agencies, people and elected representatives. (b) The aim is to build mobile based dynamic reporting system which will facilitate into flow of information among all concerned stakeholders. (c) The aim is to provide better Governance by more involvement of public.
+Organization	Govt of Goa
+Category	Software
+Domain Bucket	Software - Mobile App development
+Youtube Link	
+Dataset Link	NA
+
+Description	
+The problem is to identify optimal set of land based launch locations in a given area of 100km X 100km size, to maximize the kill probability of all the targets directed to this area. The interceptors are deployed in clustered manner in multiple locations within that given area. Solution may consider following aspects .. a) Set of Ballistic Missiles Trajectories of targets, each represented by a point(Latitude, Longitude, Altitude) to be taken as input b) Set of multiple locations/areas (polygons of Latitude & Longitude) where interceptors are deployed to be taken as input. c) Minimal optimal set of locations (polygons of Latitude & Longitude) to maximize the destruction of targets to be the output, which is the subset of (b) above.
+Organization	Dte of IT & Cyber Security, DRDO
+Category	Software
+Domain Bucket	Security & Surveillance
+Youtube Link	
+Dataset Link	NA
+
+Description	
+Andaman & Nicobar Islands have a fragile ecosystem with a vivid flora and fauna. Protecting the wildlife is critical to its environment. Increase in wildlife offence like killing of protected animals has increased in the recent past. This app will enable to curb such offence.
+Organization	Dr. B R Ambedkar Institute of Technology
+Category	Software
+Domain Bucket	Sustainable Environment
+Youtube Link	
+Dataset Link	NA
+
+
+Description	
+Under MGNREGA, wage payment is made to workers doing unskilled work and subsequent creation of assets. A muster roll is prepared (consisting of list of workers who are working on a particular asset/work ) and attendance is entered. Based on no of days attended/worked, the payment is released. Currently capturing of attendance is a manual process where a physical entry is made by the work supervisor and no proper attendance tracking is done. There is no checking or effective/efficient verification process involved. An intelligent attendance solution is desired to be developed (out of the box thinking will be appreciated ad not just limited to a Mobile App based solution) which is feasible, less complex in implementation, address all challenges and eliminates the gaps in current system promoting transparency and less corruption/fraudulent entries. The system developed/proposed should be fool proof, preferred automated with minimal manual intervention. Latest technological interventions (use of Advanced Analytics, BI, AI, Machine learning etc.) should be referenced for developing a state of the art solution Sample Data Required: No
+Organization	Ministry of Rural Development
+Category	Software
+Domain Bucket	Software - Web App development
+Youtube Link	
+Dataset Link	NA
+
+Description	
+Artificial Intelligence (Al) and Machine Learning solutions for Police functions like Identity Resolution on disjoined databases, Natural Language Processing over Indian Languages, Speech to Text converters in Indian Languages, etc.
+Organization	NATIONAL CRIME RECORDS BUREAU
+Category	Software
+Domain Bucket	Security & Surveillance
+Youtube Link	
+Dataset Link	NA
+
+Description	****
+Detecting Poor Telecom Connectivity (Cellular) regions using user device signal strength. An APP based solution may be developed for Detecting Poor Telecom Connectivity (Cellular) regions using user devise signal strength along with geo coordinates of the user to a central server. Government authorities can use that information to assess the poor coverage regions and take necessary steps to address the issue of poor coverage
+Organization	Ministry of Communications
+Category	Software
+Domain Bucket	Software - Mobile App development
+Youtube Link	https://developer.android.com/reference/android/telephony/SignalStrength.html
+Dataset Link	NA

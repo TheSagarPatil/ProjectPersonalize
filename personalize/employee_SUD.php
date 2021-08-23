@@ -16,18 +16,18 @@ if(isset($_POST["Save"])){
 	$employee->pswd = isset($_POST["password"])?$_POST["password"]:"";
 	$employee->photo = empty($_FILES['photo']["tmp_name"])?"":file_get_contents($_FILES['photo']["tmp_name"]);
 	if($employee->id==""){
-		echo "saving var";
+		//echo "saving var";
 		$msg = $employee->saveRecord();
 		header("Location: employees.php?msg=".$msg);
 	}else{
-		echo "<br>updating var";
+		//echo "<br>updating var";
 		$msg = $employee->updateRecord();
 		header("Location: employees.php?msg=".$msg);
 	}
 }
 if(isset($_POST["Delete"])){
 	$employee->id = isset($_POST["id"])?$_POST["id"]:"";
-	echo "deleting";
+	//echo "deleting";
 	$msg = $employee->deleteRecord();
 	header("Location: employees.php?msg=".$msg);
 	
@@ -62,7 +62,7 @@ if(isset($_POST["loginType"])){
 		$supplier->pswd = isset($_POST["password"])?$_POST["password"]:"";
 		$result = $supplier->login();
 		$num = $result->rowCount();
-		echo "supLogin".$supplier->email;
+		//echo "supLogin".$supplier->email;
 		if($num >0){
 			while($row = $result->fetch(PDO::FETCH_ASSOC)){
 				extract($row);
@@ -78,13 +78,13 @@ if(isset($_POST["loginType"])){
 		
 	}
 	if($msg== "success"){
-		echo $_SESSION["loginMode"];
+		//echo $_SESSION["loginMode"];
 		header("Location: corpHome.php");
 	}else{
-		echo $msg;
+		//echo $msg;
 		header("Location: employeeLogin.php");
 	}
 }
-echo $query;
-echo "<br/>".$id . " " . $name;
+//echo $query;
+//echo "<br/>".$id . " " . $name;
 ?>
